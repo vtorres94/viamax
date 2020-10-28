@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls',
     'whitenoise.runserver_nostatic',
+    'django.heroku'
 ]
 
 MIDDLEWARE = [
