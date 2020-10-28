@@ -6,19 +6,16 @@ from django.forms import ModelForm
 from django.shortcuts import render, redirect, get_object_or_404
 
 pagador=Pagadores()
-
-def index(request):
-    doc_externo = open("E:\DJangoWorkspace\\viamax\polls\\templates\polls\index.html")
-    plt = Template(doc_externo.read())
-    doc_externo.close()
-    ctx = Context({"persona": "miro torres"})
-    doc = plt.render(ctx)
-    return HttpResponse(doc)
-
 class PagadorForm(ModelForm):
     class Meta:
         model = Pagadores
         fields = ['logo_base64', 'pagador', 'tipo_cambio']
+
+def index(request, template_name='polls/index.html'):
+    pagador = Pagadores.objects.all().order_by('pk')
+    data = {}
+    data['object_list'] = pagador
+    return render(request, template_name, data)
 
 def pagadores_list(request, template_name='polls/pagadores.html'):
     pagador = Pagadores.objects.all()

@@ -7,70 +7,50 @@
     </head>
     <body>
         <div class="ui segment">
-            <img class="ui small image logo" src="{% static 'images/viamax.png'%}">
-            <table class="ui celled padded table tabla">
-                <thead>
-                    <tr>
-                        <th class="single line">Evidence Rating</th>
-                        <th>LOGO</th>
-                        <th>PAGADOR</th>
-                        <th>TIPO DE CAMNIO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <h2 class="ui center aligned header">A</h2>
-                        </td>
-                        <td class="single line">
-                            Power Output
-                        </td>
-                        <td>
-                            <div class="ui star rating" data-rating="3" data-max-rating="3"></div>
-                        </td>
-                        <td class="right aligned">
-                            80% <br>
-                            <a href="#">18 studies</a>
-                        </td>
-                        <td>Creatine supplementation is the reference compound for increasing muscular creatine levels; there is variability in this increase, however, with some nonresponders.</td>
+            <img class="ui small image logo" style="margin-bottom: -10%;" src="{% static 'images/viamax.png'%}">
+            <div style="
+                background-color: white;
+                border-radius: 5px;
+                width: 600px;
+                margin-left: 30%;
+                font-family: sans-serif;
+            ">
+                <table style="width: 600px; margin-left: 15px;">
+                    <thead>
+                        <tr>
+                            <th colspan="3">TIPOS DE CAMBIO</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        {% for pagador in object_list %}
                         <tr>
                         <td>
-                            <h2 class="ui center aligned header">A</h2>
+                            <img
+                                style="
+                                    width: 120px;
+                                    height: 40px;
+                                " 
+                                src="{% static 'images/logos/' %}{{ pagador.logo_base64 }}"
+                            </img>
                         </td>
-                        <td class="single line">
-                            Weight
-                        </td>
+                        <td>{{ pagador.pagador }}</td>
+                        <td>{{ pagador.tipo_cambio }}</td>
                         <td>
-                            <div class="ui star rating" data-rating="3" data-max-rating="3"></div>
+                            
                         </td>
-                        <td class="right aligned">
-                            100% <br>
-                            <a href="#">65 studies</a>
-                        </td>
-                        <td>Creatine is the reference compound for power improvement, with numbers from one meta-analysis to assess potency</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="5">
-                        <div class="ui right floated pagination menu">
-                            <a class="icon item">
-                            <i class="left chevron icon"></i>
-                            </a>
-                            <a class="item">1</a>
-                            <a class="item">2</a>
-                            <a class="item">3</a>
-                            <a class="item">4</a>
-                            <a class="icon item">
-                            <i class="right chevron icon"></i>
-                            </a>
-                        </div>
-                        </th>
-                    </tr>
-                </tfoot>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                            
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
-        </body>
+        </div>
+    </body>
     <footer></footer>
 </html>

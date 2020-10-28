@@ -22,9 +22,9 @@ urlpatterns = [
     path('', index),
     path('pagadores/', pagadores_list),
     path('pagadores/<int:id>', pagador_view),
-    path('pagadores/save/<str:logo_base64>/<str:pagador>/<str:tipo_cambio>', pagador_create),
-    path('pagadores/edit/<int:id>/<str:logo_base64>/<str:pagador>/<str:tipo_cambio>', pagador_update),
-    path('pagadores/delete/<int:id>', pagador_delete),
+    path('pagadores/save/', pagador_create),
+    path('pagadores/edit/<int:pk>/', pagador_update),
+    path('pagadores/delete/<int:pk>', pagador_delete),
     path('fecha/', date),
     path('edad/<int:edad>/<int:year>/', calcularEdad),
 ]
