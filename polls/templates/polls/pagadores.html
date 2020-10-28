@@ -1,0 +1,26 @@
+<h1>Pagadores</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>ID</th>
+    <th>Logo</th>
+    <th>Pagador</th>
+    <th>Tipo de cambio</th>
+    <th>Opciones</th>
+    </tr>
+</thead>
+<tbody>
+    {% for pagador in object_list %}
+    <tr>
+    <td>{{ pagador.id }}</td>
+    <td>{{ pagador.logo_base64 }}</td>
+    <td>{{ pagador.pagador }}</td>
+    <td>{{ pagador.tipo_cambio }}</td>
+    <td>
+        
+    </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>

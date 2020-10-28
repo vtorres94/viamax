@@ -1,23 +1,56 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Context, Template
+from polls.models import Pagadores
+from django.forms import ModelForm
+from django.shortcuts import render, redirect, get_object_or_404
 
-class Persona(object):
-    def __init__(self, nombre, apellido):
-        self.nombre=nombre
-        self.apellido=apellido
+pagador=Pagadores()
 
 def index(request):
-    p1=Persona("miro","torres")
     doc_externo = open("E:\DJangoWorkspace\\viamax\polls\\templates\polls\index.html")
     plt = Template(doc_externo.read())
     doc_externo.close()
-    ctx = Context({"persona": p1})
+    ctx = Context({"persona": "miro torres"})
     doc = plt.render(ctx)
     return HttpResponse(doc)
 
-def boton(request):
-    return HttpResponse("<button onClick=(console.log('holas'))>Prueba</button>")
+class PagadorForm(ModelForm):
+    class Meta:
+        model = Pagadores
+        fields = ['logo_base64', 'pagador', 'tipo_cambio']
+
+def pagadores_list(request, template_name='polls/pagadores.html'):
+    pagador = Pagadores.objects.all()
+    data = {}
+    data['object_list'] = pagador
+    return render(request, template_name, data)
+
+def pagador_view(request, pk, template_name='polls/pagador_detail.html'):
+    pagador= get_object_or_404(Pagadores, pk=pk)    
+    return render(request, template_name, {'object':pagador})
+
+def pagador_create(request, template_name='polls/pagador_form.html'):
+    form = PagadorForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('pagadores')
+    return render(request, template_name, {'form':form})
+
+def pagador_update(request, pk, template_name='polls/pagador_form.html'):
+    pagador= get_object_or_404(Pagadores, pk=pk)
+    form = PagadorForm(request.POST or None, instance=pagador)
+    if form.is_valid():
+        form.save()
+        return redirect('pagadores')
+    return render(request, template_name, {'form':form})
+
+def pagador_delete(request, pk, template_name='polss/pagador_confirm_delete.html'):
+    pagador= get_object_or_404(Pagadores, pk=pk)    
+    if request.method=='POST':
+        pagador.delete()
+        return redirect('pagadores')
+    return render(request, template_name, {'object':pagador})
 
 def date(request):
     date=datetime.datetime.now()
@@ -34,7 +67,7 @@ def calcularEdad(request, edad, year):
     periodo=year-2019
     edadFutura=edad+periodo
     palabra=""
-    if edad < year:
+    if edad > year:
         palabra = 'tenías'
     else:
         palabra = 'tendrás'

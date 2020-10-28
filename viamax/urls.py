@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from polls.views import index, boton, date, calcularEdad
+from polls.views import index, date, calcularEdad, pagadores_list, pagador_view, pagador_create, pagador_update, pagador_delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('prueba/', boton),
+    path('pagadores/', pagadores_list),
+    path('pagadores/<int:id>', pagador_view),
+    path('pagadores/save/<str:logo_base64>/<str:pagador>/<str:tipo_cambio>', pagador_create),
+    path('pagadores/edit/<int:id>/<str:logo_base64>/<str:pagador>/<str:tipo_cambio>', pagador_update),
+    path('pagadores/delete/<int:id>', pagador_delete),
     path('fecha/', date),
     path('edad/<int:edad>/<int:year>/', calcularEdad),
 ]
