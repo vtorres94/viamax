@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'viamax.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'viamax',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'ddr3a8f9jtm3k1',
+        'USER': 'uzobwkwxegyhnn',
+        'PASSWORD': 'd47ceb82b27f77110b08dfad4d9cf5130b909f9bb5c2334728399cfc494749ba',
+        'HOST': 'ec2-34-231-56-78.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
