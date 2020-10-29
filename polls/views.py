@@ -12,7 +12,7 @@ class PagadorForm(ModelForm):
         fields = ['logo_base64', 'pagador', 'tipo_cambio']
 
 def index(request, template_name='polls/index.html'):
-    pagador = Pagadores.objects.all().order_by('pk')
+    pagador = Pagadores.objects.all().order_by('tipo_cambio')
     data = {}
     data['object_list'] = pagador
     return render(request, template_name, data)
