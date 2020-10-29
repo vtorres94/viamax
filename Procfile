@@ -1,1 +1,1 @@
-web: gunicorn viamax.wsgi:polls --log-file -
+web: gunicorn viamax.wsgi
