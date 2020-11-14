@@ -7,15 +7,10 @@
     </head>
     <body>
         <div class="ui segment">
-            <img class="ui small image logo" style="margin-bottom: -10%; margin-top: -7%" src="{% static 'images/viamax.png'%}">
-            <div style="
-                background-color: white;
-                border-radius: 5px;
-                width: 600px;
-                margin-left: 30%;
-                font-family: sans-serif;
-                position: center;
-            ">
+            <div id='logo'>
+                <img class="ui small image logo" style="" src="{% static 'images/viamax.png'%}">
+            </div>
+            <div id='fondo-tabla'>
                 <table style="width: 600px; margin-left: 15px;">
                     <thead>
                         <tr>
@@ -26,11 +21,7 @@
                         {% for pagador in object_list %}
                         <tr>
                         <td>
-                            <img
-                                style="
-                                    width: 120px;
-                                    height: 40px;
-                                " 
+                            <img id='logo-pagador'
                                 src="{% static 'images/logos/' %}{{ pagador.logo_base64 }}"
                             </img>
                         </td>
