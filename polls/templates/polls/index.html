@@ -11,7 +11,7 @@
                 <img class="ui small image logo" style="" src="{% static 'images/viamax.png'%}">
             </div>
             <div id='fondo-tabla'>
-                <table style="width: 600px; margin-left: 15px;">
+                <table>
                     <thead>
                         <tr>
                             <th colspan="3">TIPOS DE CAMBIO</th>
@@ -25,11 +25,8 @@
                                 src="{% static 'images/logos/' %}{{ pagador.logo_base64 }}"
                             </img>
                         </td>
-                        <td>{{ pagador.pagador }}</td>
-                        <td>{{ pagador.tipo_cambio }}</td>
-                        <td>
-                            
-                        </td>
+                        <td id='nombre-pagador'>{{ pagador.pagador }}</td>
+                        <td id='tipo-cambio'>${{ pagador.tipo_cambio }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
